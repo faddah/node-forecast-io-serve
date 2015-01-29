@@ -19,7 +19,9 @@ function printError(error) {
 	console.error(error.message);
 }
 
-function getForecast(username) {
+var longLat = zipLongLat(zip);
+
+function getForecast(username, ) {
 	//  Connect to the API URL (http://teamtreehouse.com/[USERNAME].json)
 	var request = http.get("http://teamtreehouse.com/" + username + ".json", function(response) {
 		var body = "";
