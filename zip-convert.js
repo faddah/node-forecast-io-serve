@@ -18,7 +18,7 @@ function getLongLat(zip) {
 	var username = "faddah";
 	var geonamesAPIURL = "http://api.geonames.org/postalCodeLookupJSON?postalcode=" + zip + "&country=US&username=" + username;
 	var request = http.get(geonamesAPIURL, function(response) {
-		var body = "";
+		var finalData = "";
 		//  Read the data
 		response.on('data', function (dataStream) {
 			finalData += dataStream;
@@ -41,25 +41,13 @@ function getLongLat(zip) {
 				}
 			} else {
 				// Status Code Error
-				printError({message: "There was an error getting the profile for the Treehouse user \"" + username + ",\" user name may not exist. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
+				printError({message: "There was an error getting the profile for this Forecast.io call for \"" + zip + ",\" user name may not exist. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
 			}
 		});
 		//  console.log(response.statusCode);
 	});
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+getLongLat(process.argv.slice(2));
 
 // api url call to geonames for zip code:  http://api.geonames.org/postalCodeLookupJSON?postalcode=97215&country=US&username=faddah
