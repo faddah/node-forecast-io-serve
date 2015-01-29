@@ -20,13 +20,13 @@ function getLongLat(zip) {
 	var request = http.get(geonamesAPIURL, function(response) {
 		var body = "";
 		//  Read the data
-		response.on('data', function (chunk) {
-			body += chunk;
+		response.on('data', function (dataStream) {
+			finalData += dataStream;
 		});
 		response.on('end', function() {
 			if(response.statusCode === 200) {
 				try {
-    			console.log(JSON.parse(body));
+    			console.log(JSON.parse(finalData));
 					// console.log(body);
 					// console.log(typeof body);
 					// Parse the data
