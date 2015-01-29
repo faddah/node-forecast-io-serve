@@ -1,7 +1,7 @@
 Node.js Command Line App to get Weather from Forecast.io
 =================
 
-Based on the Node.js Command Line App for retrieving account badge and points info from [Treehouse](http://teamtreehouse.com) in JSON format from [@Chalkers])(http://twitter.com/chalkers/).
+Based on the Node.js Command Line App for retrieving account badge and points info from [Treehouse](http://teamtreehouse.com) in JSON format from [@Chalkers](http://twitter.com/chalkers/). Takes ```process.argv.slice[2]``` from command line for zip code for current weather forecast and returns from [API at Forecast.io](https://developer.forecast.io/)
 
 ### Version
 
@@ -13,7 +13,7 @@ v0.1a
   * forecast.js — main command line app file run from node
   * zip-convert.js — takes u.s. zip from command line argv and converts it to longitude and latitude for [forecast.io](http://forecast.io/) processing.
   * zip-forecast.js — takes converted from zip code longitude/latitude from zip-convert.js and uses forecast.io API and KEY to return weather forecast.
-* Initial files loaded.
+* Initial files loaded up to GitHub.
 * Get coding!
 
 ### Required Software
