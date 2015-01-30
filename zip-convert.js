@@ -39,9 +39,9 @@ function getLocation(zip) {
 					var location = JSON.parse(finalData).postalcodes[0];
 					// Print and return the longitude/latitude data objects
 					// printLocationInfo(zip, location.placeName, location.adminCode1, location.countryCode, location.lng, location.lat);
-					var zipLongLat = [location.lng, location.lat];
-					console.log(zipLongLat);
-					return zipLongLat;
+					var arrLongLat = { "longitude":location.lng, "latitude":location.lat };
+					// console.log(zipLongLat);
+					return arrLongLat;
 				} catch(error) {
 					// Parse Error
 					printError(error);
@@ -57,7 +57,7 @@ function getLocation(zip) {
 
 // getLocation(process.argv.slice(2));
 
-// export module for use in rest of app, in zip-forecast.js
+// export module for use in zip-forecast.js
 module.exports.getLocation = getLocation;
 
 // api url call to geonames for zip code:  http://api.geonames.org/postalCodeLookupJSON?postalcode=97215&country=US&username=faddah

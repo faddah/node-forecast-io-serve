@@ -6,23 +6,33 @@
 // example forecast.io API URL Call to return JSON with weather
 
 var http = require("http");
-var http = require("./zip-convert.js");
+var zipConvert = require("./zip-convert.js");
+console.log("We are now after the requires.")
 
 // Prints out the final message
 function printMessage(city, forecast) {
 	var forecastMsg = "The forecast for " + city + " is: " + forecast + ".";
 	console.log(message);
 }
+console.log("We are now after the printMessage function.");
 
 // Prints out error messages
 function printError(error) {
 	console.error(error.message);
 }
+console.log("We are now after the printError function.");
 
-var longLat = zipLongLat(zip);
+console.dir("The argv's are: " + process.argv);
 
-function getForecast(username, ) {
+var zipLongLat = {};
+zipLongLat = zipConvert.getLocation(process.argv.slice[2]);
+// console.log("longitude: " + zipLongLat[0] + ", latitude: " + zipLongLat[1] + ".");
+console.dir(zipLongLat.longitude + ", " + zipLongLat.latitude);
+
+/* * * * * * * * * *
+function getForecast(longLat) {
 	//  Connect to the API URL (http://teamtreehouse.com/[USERNAME].json)
+
 	var request = http.get("http://teamtreehouse.com/" + username + ".json", function(response) {
 		var body = "";
 		//  Read the data
@@ -59,4 +69,6 @@ function getForecast(username, ) {
 
 }
 
-module.exports.getForecast = getForecast;
+* * * * * * * * * */
+
+// module.exports.getForecast = getForecast;
