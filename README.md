@@ -32,4 +32,5 @@ v0.1d
 * [@yuetsu on Twitter](http://twitter.com/yuetsu)
 
 *Special Thanks!*
-*@jerrysv, @justinabrahm & @chrisdickinson from @pdxnode — for how to properly parse the location JSON data object that had an array in it, and chris for showing how to use the node.js 'http' ```ready``` *keyword to return the location object properly. Thanks guys!
+
+*@jerrysv, @justinabrahm & @chrisdickinson from @pdxnode — for how to properly parse the location JSON data object that had an array in it, and chris for showing how to use the node.js 'http'* ```ready``` *keyword to return the location object properly. Thanks guys!*
