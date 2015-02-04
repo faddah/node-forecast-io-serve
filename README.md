@@ -5,7 +5,7 @@ Based on the Node.js Command Line App for retrieving account badge and points in
 
 ### Version
 
-v0.1b
+v0.1d
 
 ### Current Info/Still Needed
 
@@ -14,7 +14,8 @@ v0.1b
   * zip-convert.js — takes u.s. zip from command line argv and converts it to longitude and latitude for [forecast.io](http://forecast.io/) processing.
   * zip-forecast.js — takes converted from zip code longitude/latitude from zip-convert.js and uses forecast.io API and KEY to return weather forecast.
 * Updated files loaded up to GitHub.
-* zip-convert.js now correctly returning long./lat. data as a 2 member array from the zip code to [genonames.org](http://www.geonames.org/) and made a module export for the zip-forecast.js part.
+* zip-convert.js now returning long./lat. and all other location info as a full JSON data object from the zip code to [genonames.org](http://www.geonames.org/) and made a module export for the zip-forecast.js part.
+* Moving on to code zip-forecast as module to get weather from forecast.io based on location object ffeed into forecast.io
 * Get to more coding!
 
 ### Required Software
@@ -29,3 +30,6 @@ v0.1b
 
 * [faddah on Github](https://github.com/faddah)
 * [@yuetsu on Twitter](http://twitter.com/yuetsu)
+
+** Special Thanks! **
+** @jerrysv, @justinabrahm & @chrisdickinson from @pdxnode — for how to properly parse the location JSON data object that had an array in it, and chris for showing how to use the node.js *http* ```ready``` keyword to return the location object properly. Thanks guys!

@@ -1,6 +1,6 @@
-//  Problem: We need a simple way to look at a Treehouse user's badge count and JavaScript points.
+//  Problem:  Need to return weather data from forecast.io, but they only take .
 
-//  Solution:  Use Node.js to connect to Treehouse's API to get profile information and print it out.
+//  Solution:  First, use our own created zip-convert.js to convert zip code to longitude/latitude.
 
 // my forecast.io API KEY - 6b0701ccfa469e7b92cac363130fa2bb
 // example forecast.io API URL Call to return JSON with weather
