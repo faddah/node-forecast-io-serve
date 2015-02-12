@@ -3,52 +3,59 @@
 //  Solution:  First, use our own created zip-convert.js to convert zip code to longitude/latitude.
 
 // my forecast.io API KEY - 6b0701ccfa469e7b92cac363130fa2bb
-// example forecast.io API URL Call to return JSON with weather
+// example forecast.io API URL Call to return JSON with weather —
+// https://api.forecast.io/forecast/6b0701ccfa469e7b92cac363130fa2bb/37.8267,-122.423
 
 var http = require("http");
 var zipConvert = require("./zip-convert.js");
-console.log("We are now after the requires.")
+var messages = require("./messages.js");
 
-// Prints out the final message
-function printMessage(city, forecast) {
-	var forecastMsg = "The forecast for " + city + " is: " + forecast + ".";
-	console.log(message);
+var getLocation = zipConvert.getLocation;
+var printLocationInfo = messages.printLocationInfo;
+var printForecastMessage = messages.printForecastMessage;
+var printError = messages.printError;
+
+// var zipLongLat = {};
+// zipLongLat = zipConvert.getLocation(process.argv.slice[2], function(error, location) {
+//   console.log(location);
+  // printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+// });
+
+/* * * * * * * * * * * * * * * *
+getLocation(process.argv.slice[2], function(error, location) {
+//   console.log(location);
+  printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+});
+
+* * * * * * * * * * * * * * * */
+
+function showCLI(argvs) {
+  return argvs;
 }
-console.log("We are now after the printMessage function.");
 
-// Prints out error messages
-function printError(error) {
-	console.error(error.message);
-}
-console.log("We are now after the printError function.");
+var argvsObj = {};
+argvsObj = showCLI(process.argv);
+console.log(argvsObj);
 
-console.dir("The argv's are: " + process.argv);
 
-var zipLongLat = {};
-zipLongLat = zipConvert.getLocation(process.argv.slice[2]);
-// console.log("longitude: " + zipLongLat[0] + ", latitude: " + zipLongLat[1] + ".");
-console.dir(zipLongLat.longitude + ", " + zipLongLat.latitude);
-
-/* * * * * * * * * *
-function getForecast(longLat) {
-	//  Connect to the API URL (http://teamtreehouse.com/[USERNAME].json)
-
-	var request = http.get("http://teamtreehouse.com/" + username + ".json", function(response) {
-		var body = "";
+/* * * * * * * * * * * * * * * *
+function getForecast(latitude, longitude) {
+	//  Connect to the Forecast.io API URL (https://api.forecast.io/forecast/[APIKEY]/[LATITUDE],[LONGITUDE],[TIME])
+  var apiKey = '6b0701ccfa469e7b92cac363130fa2bb';
+	var request = http.get("https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude, function(response) {
+		var finalData = "";
 		//  Read the data
-		response.on('data', function (chunk) {
-			body += chunk;
+		response.on('data', function (dataStream) {
+			finalData += dataStream;
 		});
 		response.on('end', function() {
 			if(response.statusCode === 200) {
 				try {
-					// console.log(body);
-					// console.log(typeof body);
 					// Parse the data
-					var profile = JSON.parse(body);
+					var forecast = JSON.parse(finalData);
 					// Print the data
-					// console.dir(profile);
-					printMessage(username, profile.badges.length, profile.points.JavaScript);
+					console.dir(forecast);
+					// printMessage(username, profile.badges.length, profile.points.JavaScript);
 					// printMessage(faddah, profile.badges.length, profile.points.JavaScript);
 				} catch(error) {
 					// Parse Error
@@ -61,14 +68,10 @@ function getForecast(longLat) {
 		});
 		//  console.log(response.statusCode);
 	});
-
 	// Connection Error
 	request.on("error", printError);
-
-	//  printMessage("Chalkers", 1000, 2000000);
-
 }
 
-* * * * * * * * * */
+module.exports.getForecast = getForecast;
 
-// module.exports.getForecast = getForecast;
+* * * * * * * * * * * * * * * */

@@ -6,19 +6,10 @@
 // send user input u.s. zip code to geonames server via node
 
 var http = require("http");
+var messages = require("./messages.js");
 
-/* * * * * * * * * * * * * * * *
-// Prints out the final message
-function printLocationInfo(zipCode, city, state, country, long, lat) {
-	var zipMessage = "The city for the zip code " + zipCode + " is : " + city + ", " + state +  ", " + country + ", longitude: " + long + ", latitude: " +  lat  + ".";
-	console.log(zipMessage);
-}
-* * * * * * * * * * * * * * * */
-
-// Prints out error messages
-function printError(error) {
-	console.error(error.message);
-}
+var printError = messages.printError;
+// var printLocationInfo = messages.printLocationInfo;
 
 function getLocation(zip, ready) {
 	//  Connect to the API URL ("http://api.geonames.org/postalCodeLookupJSON?postalcode=[ZIP]&country=US&username=[USERNAME]")
@@ -51,10 +42,13 @@ function getLocation(zip, ready) {
 	});
 }
 
+/* * * * * * * * * * * * * * * *
 getLocation(process.argv.slice(2), function(error, location) {
   console.log(location);
-  // printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+  printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
 });
+
+* * * * * * * * * * * * * * * */
 
 // export module for use in zip-forecast.js
 module.exports.getLocation = getLocation;
