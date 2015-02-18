@@ -1,3 +1,4 @@
+/* @flow */
 //  Problem:  Need to return weather data from forecast.io, but they only take .
 
 //  Solution:  First, use our own created zip-convert.js to convert zip code to longitude/latitude.
@@ -21,21 +22,26 @@ var printError = messages.printError;
   // printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
 // });
 
-/* * * * * * * * * * * * * * * *
-getLocation(process.argv.slice[2], function(error, location) {
-//   console.log(location);
-  printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+// use zip-convert.js module to get location object from geonames.org
+
+
+
+getLocation(process.argv.slice(2), function(error, location) {
+  if(location){
+    try {
+      printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+    } catch(error) {
+			// Locaton object null or undefined error
+			printError(error);
+		}
+  } else {
+		// Status Code Error
+		printError({message: "There was an error getting the location infor from the Geonames.org server. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
+  }
+//  printTheLoc(location);
 });
 
-* * * * * * * * * * * * * * * */
-
-function showCLI(argvs) {
-  return argvs;
-}
-
-var argvsObj = {};
-argvsObj = showCLI(process.argv);
-console.log(argvsObj);
+// console.dir("The Location Object is:  " + theLoc);
 
 
 /* * * * * * * * * * * * * * * *

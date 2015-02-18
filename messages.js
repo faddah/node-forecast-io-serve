@@ -1,3 +1,4 @@
+/* @flow */
 // Prints out the location message
 function printLocationInfo(zipCode, city, state, country, long, lat) {
 	var zipMessage = "The city for the zip code " + zipCode + " is : " + city + ", " + state +  ", " + country + ", longitude: " + long + ", latitude: " +  lat  + ".";

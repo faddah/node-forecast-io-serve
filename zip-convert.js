@@ -1,4 +1,4 @@
-
+/* @flow */
 //  Problem: forecast.io only will take arguments in longitude and latitude, and input from users will be zip/postal codes.
 
 //  Solution:  use node going to geonames.org server api to get back JSON with longitude and latitude for given zip code
@@ -41,14 +41,6 @@ function getLocation(zip, ready) {
 		});
 	});
 }
-
-/* * * * * * * * * * * * * * * *
-getLocation(process.argv.slice(2), function(error, location) {
-  console.log(location);
-  printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
-});
-
-* * * * * * * * * * * * * * * */
 
 // export module for use in zip-forecast.js
 module.exports.getLocation = getLocation;
