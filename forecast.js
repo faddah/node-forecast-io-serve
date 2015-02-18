@@ -1,15 +1,15 @@
-// var element = document.querySelector("#greeting");
-// element.innerText = "Hello, world!";
+var async = require('async'),
+	zip-forecast = require("./zip-forecast.js"),
+	zipcodes = process.argv.slice(2);
 
+// DEBUG! Let's set these by hand.
+zipcodes = ["10011", "20050", "91308", "90069", "94101", "97215"];
 
-var profile = require("./zip-forecast.js");
-// console.dir(process.argv);
-var zips = process.argv.slice(2);
+// Loop over each zipcode, one after another.
+async.eachSeries(zipcodes, function (zipcode, next) {
+	// Do something w/the zipcode.
+	zip-forecast.getForecast(zipcode);
+	next(null);
+});
 
-// var postalCodes = ["10011", "20050", 91308", "90069", "94101", "97215"];
-
-zips.forEach(zip-forecast.getForecast);
-
-// var username = "chalkers";
-// var faddah = "faddah";
 
