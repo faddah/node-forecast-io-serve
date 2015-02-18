@@ -6,5 +6,6 @@
   "dependencies": {
     "async": "^0.9.0"
   },
+  "scripts": {"start": "node forecast.js"},
   "engine": "node 0.10.x"
 }

@@ -1,5 +1,5 @@
 var async = require('async'),
-	zip-forecast = require("./zip-forecast.js"),
+	zip = require("./lib/zip-forecast.js"),
 	zipcodes = process.argv.slice(2);
 
 // DEBUG! Let's set these by hand.
