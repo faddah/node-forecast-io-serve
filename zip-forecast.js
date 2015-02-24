@@ -83,7 +83,7 @@ var showForecastObject = function(error, forecast) {
 
 var theLoc = { "lng":-122.727802, "lat":37.784827};
 
-getForecast(theLoc, showForecastObject);
+getForecast(theLoc, showForecast);
 
 module.exports.getForecast = getForecast;
 module.exports.showForecast = showForecast;
