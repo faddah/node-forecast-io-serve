@@ -1,3 +1,4 @@
+/* @flow */
 // Prints out the location message
 function printLocationInfo(zipCode, city, state, country, long, lat) {
 	var zipMessage = "The city for the zip code " + zipCode + " is : " + city + ", " + state +  ", " + country + ", longitude: " + long + ", latitude: " +  lat  + ".";
@@ -27,7 +28,7 @@ var windDirection = function(bearing) {
 // Prints out the final weather forecast message
 function printForecastMessage(forecast) {
   var fCurr = forecast.currently;
-  var forecastMsg = "The current weather forecast : " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + fCurr.humidity + ", a barometric pressure of: " + fCurr.pressure + ", and a visibility of: " + (100 - fCurr.visibility) + "%.";
+  var forecastMsg = "The current weather forecast : " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + fCurr.humidity + ", a barometric pressure of: " + fCurr.pressure + ", and a visibility of: " + (100 - fCurr.visibility) + "%.\n";
   console.log(forecastMsg);
 }
 

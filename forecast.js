@@ -1,3 +1,4 @@
+/* @flow */
 //
 // Called like
 // $> node forecast.js 97214
@@ -36,5 +37,3 @@ async.eachSeries(zipcodes, iterator, allDone);
 // var zipcode = process.argv.slice(2);
 
 // getLocation(zipcode, showLocation);
-
-

@@ -7,6 +7,7 @@
 // example forecast.io API URL Call to return JSON with weather —
 // https://api.forecast.io/forecast/6b0701ccfa469e7b92cac363130fa2bb/37.8267,-122.423
 
+<<<<<<< HEAD
 // var http = require("http");
 var https = require("https")
 var async = require("async");
