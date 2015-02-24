@@ -27,26 +27,9 @@ var windDirection = function(bearing) {
 // Prints out the final weather forecast message
 function printForecastMessage(forecast) {
   var fCurr = forecast.currently;
-  var forecastMsg = "The current weather forecast : " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + ", wind speed: " + fCurr.windSpeed + "MPH " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + fCurr.humidity + ", a barometric pressure of: " + fCurr.pressure + ", and a visibility of: " + (100 - fCurr.visibility) + "%.";
+  var forecastMsg = "The current weather forecast : " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + fCurr.humidity + ", a barometric pressure of: " + fCurr.pressure + ", and a visibility of: " + (100 - fCurr.visibility) + "%.";
   console.log(forecastMsg);
 }
-
-/* * * * * * * * * *
-  
-  var fore = { "currently": 
-              { "summary": "Clear", 
-                "icon": "clear-day",
-                "temperature": 54.73,
-                "windSpeed": 3.07,
-                "windBearing": 55,
-                "precipIntensity": 0,
-                "humidity": 0.28,
-                "pressure": 1029.16,
-                "visibility": 10 } };
-
-printForecastMessage(fore);
-
-* * * * * * * * * */
 
 // Prints out error messages
 function printError(error) {

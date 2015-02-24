@@ -18,9 +18,11 @@ var messages = require("./messages.js");
 var printForecastMessage = messages.printForecastMessage;
 var printError = messages.printError;
 
-function getForecast(latitude, longitude, ready) {
+function getForecast(location, ready) {
 	//  Connect to the Forecast.io API URL (https://api.forecast.io/forecast/[APIKEY]/[LATITUDE],[LONGITUDE],[TIME])
   var apiKey = '6b0701ccfa469e7b92cac363130fa2bb';
+  var latitude = location.lat;
+  var longitude = location.lng;
 	var request = https.get("https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude, function(response) {
 		var finalData = "";
 		//  Read the data
@@ -49,26 +51,6 @@ function getForecast(latitude, longitude, ready) {
 	request.on("error", printError);
 }
 
-/* * * * * * * * * *
-
-var showLocation = function(error, location) {
-  if(location){
-    try {
-      printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
-      console.dir("location object = " + location);
-      return location;
-    } catch(error) {
-			// Locaton object null or undefined error
-			printError(error);
-		}
-  } else {
-		// Status Code Error
-		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
-  }
-};
-
-* * * * * * * * * */
-
 var showForecast = function(error, forecast) {
   if(forecast){
     try {
@@ -84,9 +66,24 @@ var showForecast = function(error, forecast) {
   }
 };
 
-var theloc = { "lng":-122.636397, "lat":45.514207};
+var showForecastObject = function(error, forecast) {
+  if(forecast){
+    try {
+      console.dir(forecast);
+      return forecast;
+    } catch(error) {
+			// Locaton object null or undefined error
+			printError(error);
+		}
+  } else {
+		// Status Code Error
+		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
+  }
+};
 
-getForecast(theloc.lat, theloc.lng, showForecast);
+var theLoc = { "lng":-118.299, "lat":33.787};
 
-// module.exports = getForecast;
+getForecast(theLoc, showForecastObject);
 
+module.exports.getForecast = getForecast;
+module.exports.showForecast = showForecast;

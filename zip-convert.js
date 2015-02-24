@@ -43,9 +43,24 @@ function getLocation(zip, ready) {
 	});
 }
 
+var showLocation = function(error, location) {
+  if(location){
+    try {
+      printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+      return location;
+    } catch(error) {
+			// Locaton object null or undefined error
+			printError(error);
+		}
+  } else {
+		// Status Code Error
+		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
+  }
+};
 
 // export module for use in zip-forecast.js
 module.exports.getLocation = getLocation;
+module.exports.showLocation = showLocation;
 
 // example api url call to geonames for zip code:  http://api.geonames.org/postalCodeLookupJSON?postalcode=97215&country=US&username=faddah
 
