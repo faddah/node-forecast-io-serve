@@ -99,7 +99,7 @@ Example returned JSON data from forecast.io —
   offset: -5,
   currently: 
   {
-    time: 1424750583,
+    time: 1424750583, 
     summary: "Clear",
     icon: "clear-night",
     nearestStormDistance: 1,
