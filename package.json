@@ -1,0 +1,34 @@
+{
+  "name": "node_forecast_io_serve",
+  "description": "Command Line App to return weather forecast.",
+  "author": "Faddah Wolf <my_biz@me.com>",
+  "version": "0.0.1-e",
+  "dependencies": {
+    "async": "^0.9.0"
+  },
+  "engine": "node 0.10.x",
+  "main": "forecast.js",
+  "scripts": {
+    "test": "node forecast.js 10011"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faddah/node-forecast-io-serve"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "nodejs",
+    "weather",
+    "forecast",
+    "forecast.io",
+    "cli",
+    "geonames.org"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faddah/node-forecast-io-serve/issues"
+  },
+  "homepage": "https://github.com/faddah/node-forecast-io-serve",
+  "devDependencies": {}
+}
