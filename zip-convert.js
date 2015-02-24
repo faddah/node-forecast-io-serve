@@ -7,9 +7,10 @@
 
 var http = require("http");
 var messages = require("./messages.js");
+var zip = process.argv.slice(2);
 
 var printError = messages.printError;
-// var printLocationInfo = messages.printLocationInfo;
+var printLocationInfo = messages.printLocationInfo;
 
 function getLocation(zip, ready) {
 	//  Connect to the API URL ("http://api.geonames.org/postalCodeLookupJSON?postalcode=[ZIP]&country=US&username=[USERNAME]")
@@ -29,7 +30,7 @@ function getLocation(zip, ready) {
           // (corrected below, per @jerrysv & @justinabrahms of Freenode #pdxnode - thanx guys!)
 					var location = JSON.parse(finalData).postalcodes[0];
 					// Per @chrisdickinson (thanks, chris!), use 'ready' to return the location data object, including longitude (location.lng) and latitude (location.lat).
-					ready(null, location);
+          ready(null, location);
 				} catch(error) {
 					// Parse Error
           printError(error);
@@ -42,8 +43,24 @@ function getLocation(zip, ready) {
 	});
 }
 
+var showLocation = function(error, location) {
+  if(location){
+    try {
+      printLocationInfo(location.postalcode, location.placeName, location.adminName1, location.countryCode, location.lng, location.lat);
+      return location;
+    } catch(error) {
+			// Locaton object null or undefined error
+			printError(error);
+		}
+  } else {
+		// Status Code Error
+		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
+  }
+};
+
 // export module for use in zip-forecast.js
 module.exports.getLocation = getLocation;
+module.exports.showLocation = showLocation;
 
 // example api url call to geonames for zip code:  http://api.geonames.org/postalCodeLookupJSON?postalcode=97215&country=US&username=faddah
 

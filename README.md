@@ -5,7 +5,7 @@ Based on the Node.js Command Line App for retrieving account badge and points in
 
 ### Version
 
-v0.1d
+v0.0.1e
 
 ### Current Info/Still Needed
 
@@ -35,6 +35,6 @@ v0.1d
 
 *Special Thanks!*
 
-*thanx first and foremost to @chalkers of [Team Treehouse](http://teamtreehouse.com/) and his [very good beginner module on node.js there](http://teamtreehouse.com/library/nodejs-basics), from which i got the base code to call to APIs like [Forecast.io](http://forecast.io) and [Geonames.org](http://geonames.org) and get JSON data objects back with which you can work.*
-*the folks in the Freenode IRC #pdxnode chat channel, especially @jerrysv, @justinabrahm & @chrisdickinson, @pdxleif from @pdxnode — for how to properly parse the location JSON data object that had an array in it, chris for showing how to use the node.js 'http'* ```ready``` *keyword to return the location object properly, and @pdxleif for reminding me it's* ```process.argv.slice(2)```*, not* ```process.argv.slice[2]```* in my code. Thanks guys!*
-*extra special thanks to my node.js mentor, @s5fs (adam), for getting my MIND RIGHT about call backs, and their use in node.js and why they don't do returns like regular JavaScript functions.*
+* *thanx first and foremost to @chalkers of [Team Treehouse](http://teamtreehouse.com/) and his [very good beginner module on node.js there](http://teamtreehouse.com/library/nodejs-basics), from which i got the base code to call to APIs like [Forecast.io](http://forecast.io) and [Geonames.org](http://geonames.org) and get JSON data objects back with which you can work.*
+* *the folks in the Freenode IRC #pdxnode chat channel, especially @jerrysv, @justinabrahm & @chrisdickinson, @pdxleif from @pdxnode — for how to properly parse the location JSON data object that had an array in it, chris for showing how to use the node.js 'http'* ```ready``` *keyword to return the location object properly, and @pdxleif for reminding me it's* ```process.argv.slice(2)```*, not* ```process.argv.slice[2]``` *in my code. Thanks guys!*
+* *extra special thanks to my node.js mentor, @s5fs (adam), for getting my MIND RIGHT about call backs, and their use in node.js and why they don't do returns like regular JavaScript functions.*
