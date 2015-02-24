@@ -1,5 +1,5 @@
 /* @flow */
-//  Problem:  Need to return weather data from forecast.io, but they only take .
+//  Problem:  Need to return weather data from forecast.io, but they only take longitude & latitude in API.
 
 //  Solution:  First, use our own created zip-convert.js to convert zip code to longitude/latitude.
 
@@ -7,17 +7,15 @@
 // example forecast.io API URL Call to return JSON with weather —
 // https://api.forecast.io/forecast/6b0701ccfa469e7b92cac363130fa2bb/37.8267,-122.423
 
-// var http = require("http");
 var https = require("https")
 var async = require("async");
 var zipConvert = require("./zip-convert.js");
 var messages = require("./messages.js");
 
-// var getLocation = zipConvert.getLocation;
-// var printLocationInfo = messages.printLocationInfo;
 var printForecastMessage = messages.printForecastMessage;
 var printError = messages.printError;
 
+// gets the forecast after being passed the location object to get longitude and latitude within.
 function getForecast(location, ready) {
 	//  Connect to the Forecast.io API URL (https://api.forecast.io/forecast/[APIKEY]/[LATITUDE],[LONGITUDE],[TIME])
   var apiKey = '6b0701ccfa469e7b92cac363130fa2bb';
@@ -51,6 +49,7 @@ function getForecast(location, ready) {
 	request.on("error", printError);
 }
 
+// calls on messages module to print out the forecast message.
 var showForecast = function(error, forecast) {
   if(forecast){
     try {
@@ -66,6 +65,9 @@ var showForecast = function(error, forecast) {
   }
 };
 
+/* * * * * * * * * * * * * * * *
+
+// this is if you want it to return the whole forecast.io JSON object (very big, has minute, hourly & daily forecast data as objects in arrays).
 var showForecastObject = function(error, forecast) {
   if(forecast){
     try {
@@ -81,9 +83,13 @@ var showForecastObject = function(error, forecast) {
   }
 };
 
-var theLoc = { "lng":-122.727802, "lat":37.784827};
+// tests with real longitudes and latitudes to see if it's returning results correctly
+var theLoc = { "lng":-122.727802, "lat":37.784827};  // west hills, california, u.s.a.
+// var theLoc = { "lng":-74.00, "lat":40.74};  // new york, new york, u.s.a.
 
 getForecast(theLoc, showForecast);
+
+* * * * * * * * * * * * * * * */
 
 module.exports.getForecast = getForecast;
 module.exports.showForecast = showForecast;
@@ -97,9 +103,9 @@ Example returned JSON data from forecast.io —
   longitude: -74,
   timezone: "America/New_York",
   offset: -5,
-  currently: 
+  currently:
   {
-    time: 1424750583, 
+    time: 1424750583,
     summary: "Clear",
     icon: "clear-night",
     nearestStormDistance: 1,
@@ -117,11 +123,11 @@ Example returned JSON data from forecast.io —
     pressure: 1029.68,
     ozone: 414.68
   },
-  minutely: 
+  minutely:
   {
     summary: "Clear for the hour.",
     icon: "clear-night",
-    data: 
+    data:
     [
       {
         time: 1424750580,
@@ -430,11 +436,11 @@ Example returned JSON data from forecast.io —
       }
     ]
   },
-  hourly: 
+  hourly:
   {
     summary: "Light snow (under 1 in.) starting tomorrow evening.",
     icon: "snow",
-    data: 
+    data:
     [
       {
         time: 1424750400,
@@ -1281,11 +1287,11 @@ Example returned JSON data from forecast.io —
       }
     ]
   },
-  daily: 
+  daily:
   {
     summary: "Mixed precipitation tomorrow through Monday, with temperatures rising to 43°F on Monday.",
 icon: "snow",
-    data: 
+    data:
     [
       {
         time: 1424667600,
@@ -1516,7 +1522,7 @@ icon: "snow",
       }
     ]
   },
-  alerts: 
+  alerts:
   [
     {
       title: "Special Weather Statement for New York, NY",
@@ -1526,7 +1532,7 @@ icon: "snow",
       uri: "http://alerts.weather.gov/cap/wwacapget.php?x=NY125396F1F544.SpecialWeatherStatement.125396F3DDF0NY.OKXSPSOKX.ebfacb53eff0fd3f190a772e0366af82"
     }
   ],
-  flags: 
+  flags:
   {
     sources:
     [
@@ -1544,7 +1550,7 @@ icon: "snow",
       "madis",
       "lamp"
     ],
-    isd-stations: 
+    isd-stations:
     [
       "725033-94728",
       "725060-94728",
@@ -1552,7 +1558,7 @@ icon: "snow",
       "997271-99999",
       "999999-94706"
     ],
-    darksky-stations: 
+    darksky-stations:
     [
       "KOKX"
     ],
@@ -1591,6 +1597,6 @@ icon: "snow",
     ],
     units: "us"
   }
-}                   
+}
 
 * * * * * * * * * * * * * * * */

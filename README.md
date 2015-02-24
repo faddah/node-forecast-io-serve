@@ -5,7 +5,7 @@ Based on the Node.js Command Line App for retrieving account badge and points in
 
 ### Version
 
-v0.0.1e
+v0.1.0
 
 ### Current Info/Still Needed
 
@@ -13,11 +13,10 @@ v0.0.1e
   * forecast.js — main command line app file run from node
   * zip-convert.js — takes u.s. zip from command line argv and converts it to longitude and latitude for [forecast.io](http://forecast.io/) processing.
   * zip-forecast.js — takes converted from zip code longitude/latitude from zip-convert.js and uses forecast.io API and KEY to return weather forecast.
-* Updated files loaded up to GitHub.
-* zip-convert.js now returning long./lat. and all other location info as a full JSON data object from the zip code to [genonames.org](http://www.geonames.org/) and made a module export for the zip-forecast.js part.
-* zip-forecast now working completely — yay! — and is also now a module to get weather from [forecast.io](http://forecast.io) based on location object feed into [genonames.org](http://www.geonames.org/).
-* still need: need to put it all together in forecast.js, which shall call the two major modules, zip-convert & zip-forecast.
-* Get to more coding!
+* All is now completely working! Just type from command line: ```$ node forecast.js [U.S. ZIPCODE(S)]```, as in: ```$ node forecast.js 10010```; or several zip codes, as thus: ```$ node forecast.js 10010 20050 94101 98109 97210```. It all works! Like magic!
+* New feature — if location has special weather alert, messages.js printForecastMessage() now prints that out.
+* Need to makes sure unicode output characters in messages through console.log() printout o.k. in terminal.
+* Future version ideas — maybe other country postal codes also?
 
 ### Required Software
 

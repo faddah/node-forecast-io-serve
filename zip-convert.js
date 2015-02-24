@@ -1,9 +1,8 @@
 /* @flow */
 //  Problem: forecast.io only will take arguments in longitude and latitude, and input from users will be zip/postal codes.
-
-//  Solution:  use node going to geonames.org server api to get back JSON with longitude and latitude for given zip code
-
-// send user input u.s. zip code to geonames server via node
+//
+//  Solution: use node going to geonames.org server api to get back JSON with longitude and latitude for given zip code
+//  send user input u.s. zip code to geonames server via node
 
 var http = require("http");
 var messages = require("./messages.js");

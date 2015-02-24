@@ -5,6 +5,7 @@ function printLocationInfo(zipCode, city, state, country, long, lat) {
 	console.log(zipMessage);
 }
 
+// used in printForecastMessage() to assign compass degree number to general compass heading
 var windDirection = function(bearing) {
   if (bearing >= 345.1 && bearing <= 15.0){
     return "N";
@@ -28,8 +29,15 @@ var windDirection = function(bearing) {
 // Prints out the final weather forecast message
 function printForecastMessage(forecast) {
   var fCurr = forecast.currently;
-  var forecastMsg = "The current weather forecast : " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + fCurr.humidity + ", a barometric pressure of: " + fCurr.pressure + ", and a visibility of: " + (100 - fCurr.visibility) + "%.\n";
+  var emDash = '\u2014';
+  var degF = '\u2109';
+  var forecastMsg = "The current weather forecast: " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + degF + ", feels like: " + fCurr.apparentTemperature + degF + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + fCurr.humidity + ", a barometric pressure of: " + fCurr.pressure + ", and a visibility of: " + (100 - fCurr.visibility) + "%.\n";
   console.log(forecastMsg);
+  if(forecast.alerts) {
+    var fAlert = forecast.alerts[0];
+    alertMsg = "\nThere is also a Special Weather Alert Message for this region " + emDash + "\n" + fAlert.title + ": \n\n" + fAlert.description + "\nMore information can be found at this web address: " + fAlert.uri + ".";
+    console.log(alertMsg);
+  }
 }
 
 // Prints out error messages
