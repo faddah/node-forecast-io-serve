@@ -1,7 +1,7 @@
 Node.js Command Line App to get Weather from Forecast.io
 =================
 
-Based on the Node.js Command Line App for retrieving account badge and points info from [Treehouse](http://teamtreehouse.com) in JSON format from [@Chalkers](http://twitter.com/chalkers/). Takes ```process.argv.slice[2]``` from command line for zip code for current weather forecast and returns from [API at Forecast.io](https://developer.forecast.io/).
+Based on the Node.js Command Line App for retrieving account badge and points info from [Treehouse](http://teamtreehouse.com) in JSON format from [@Chalkers](http://twitter.com/chalkers/). Takes ```process.argv.slice(2)``` from command line for zip code for current weather forecast and returns from [API at Forecast.io](https://developer.forecast.io/).
 
 ### Version
 
@@ -20,7 +20,7 @@ You will need [Node.JS ≥ v0.10.36](http://nodejs.org "The Node.JS Main Web Sit
   * messages.js — contains the messages used in the other *.js files to printLocationInfo(), printForecastInfo() & printError().
 * All is now completely working! Just type from command line: ```$ node forecast.js [U.S. ZIPCODE(S)]```, as in: ```$ node forecast.js 10010```; or several zip codes, as thus: ```$ node forecast.js 10010 20050 94101 98109 97210```. It all works! Like magic!
 * New feature — if location has special weather alert, messages.js printForecastMessage() now prints that out.
-* Now fully converting Atmospheric Pressure in hPA to more common U.S. Barometric Pressure inHG (inches Mercury).
+* Now fully converting Atmospheric Pressure in hPA to more common U.S. Barometric Pressure inHG (inches Mercury) (from the hPA to inHG conversion at the [conversion units site](http://www.convertunits.com/from/hpa/to/inhg).
 * Humidity now showing as percentage.
 * Unicode string chars now printing out ok in terminal CLI, just need to make sure character encoding in terminal is set always to UTF.
 * forecast.js now has optional forEach() code to call other module callback functions *(commented out; it's faster, but does not work as well as async.eachSeries())*.
