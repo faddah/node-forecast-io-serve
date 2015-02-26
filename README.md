@@ -5,22 +5,31 @@ Based on the Node.js Command Line App for retrieving account badge and points in
 
 ### Version
 
-v0.1.0
+v0.1.1
+
+### To run —
+
+You will need [Node.JS ≥ v0.10.36](http://nodejs.org "The Node.JS Main Web Site.") and the [async](https://github.com/caolan/async) module from [npm](http://npmjs.org "The NPM Main Web Site."). Once all that and this repo is loaded, Just type from command line: ```$ node forecast.js [U.S. ZIPCODE(S)]```, as in: ```$ node forecast.js 10010```; or several zip codes, as thus: ```$ node forecast.js 10010 20050 94101 98109 97210```. It all works! Like magic!
 
 ### Current Info/Still Needed
 
-* Separated into 3 main files —
+* Separated into 4 main files —
   * forecast.js — main command line app file run from node
   * zip-convert.js — takes u.s. zip from command line argv and converts it to longitude and latitude for [forecast.io](http://forecast.io/) processing.
   * zip-forecast.js — takes converted from zip code longitude/latitude from zip-convert.js and uses forecast.io API and KEY to return weather forecast.
+  * messages.js — contains the messages used in the other *.js files to printLocationInfo(), printForecastInfo() & printError().
 * All is now completely working! Just type from command line: ```$ node forecast.js [U.S. ZIPCODE(S)]```, as in: ```$ node forecast.js 10010```; or several zip codes, as thus: ```$ node forecast.js 10010 20050 94101 98109 97210```. It all works! Like magic!
 * New feature — if location has special weather alert, messages.js printForecastMessage() now prints that out.
-* Need to makes sure unicode output characters in messages through console.log() printout o.k. in terminal.
+* Now fully converting Atmospheric Pressure in hPA to more common U.S. Barometric Pressure inHG (inches Mercury).
+* Humidity now showing as percentage.
+* Unicode string chars now printing out ok in terminal CLI, just need to make sure character encoding in terminal is set always to UTF.
+* forecast.js now has optional forEach() code to call other module callback functions *(commented out; it's faster, but does not work as well as async.eachSeries())*.
+* Start creating a front-end, perhaps in Angular.JS with some Twitter-Bootstrap — get coding!
 * Future version ideas — maybe other country postal codes also?
 
 ### Required Software
 
-* Node.JS ≥ v0.10.36
+* [Node.JS ≥ v0.10.36](http://nodejs.org "The Node.JS Main Web Site.")
 * [async](https://github.com/caolan/async) module from npm
 * [Forecast.io API and API KEY](https://developer.forecast.io/)
 * [Geonames API Account](http://www.geonames.org/) that is [Enabled for your Log-in User Name](http://www.geonames.org/manageaccount).

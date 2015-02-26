@@ -50,10 +50,10 @@ function getForecast(location, ready) {
 }
 
 // calls on messages module to print out the forecast message.
-var showForecast = function(error, forecast) {
+var showForecast = function(error, forecast, location) {
   if(forecast){
     try {
-      printForecastMessage(forecast);
+      printForecastMessage(forecast, location);
       return forecast;
     } catch(error) {
 			// Locaton object null or undefined error
@@ -64,8 +64,6 @@ var showForecast = function(error, forecast) {
 		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
   }
 };
-
-/* * * * * * * * * * * * * * * *
 
 // this is if you want it to return the whole forecast.io JSON object (very big, has minute, hourly & daily forecast data as objects in arrays).
 var showForecastObject = function(error, forecast) {
@@ -83,20 +81,20 @@ var showForecastObject = function(error, forecast) {
   }
 };
 
-// tests with real longitudes and latitudes to see if it's returning results correctly
-var theLoc = { "lng":-122.727802, "lat":37.784827};  // west hills, california, u.s.a.
-// var theLoc = { "lng":-74.00, "lat":40.74};  // new york, new york, u.s.a.
-
-getForecast(theLoc, showForecast);
-
-* * * * * * * * * * * * * * * */
-
 module.exports.getForecast = getForecast;
 module.exports.showForecast = showForecast;
+module.exports.showForecastObject = showForecastObject;
 
 /* * * * * * * * * * * * * * * *
 
-Example returned JSON data from forecast.io —
+// tests with real longitudes and latitudes to see if it's returning results correctly
+// var theLoc = { "lng":-122.727802, "lat":37.784827};  // west hills, california, u.s.a.
+// var theLoc = { "lng":-74.00, "lat":40.74};  // new york, new york, u.s.a.
+
+// getForecast(theLoc, showForecast);
+
+
+Example returned JSON data from forecast.io [showForecastObject()] —
 
 {
   latitude: 40.74,

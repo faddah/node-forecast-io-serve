@@ -1,6 +1,10 @@
 [ignore]
 
 [include]
+forecast.js
+zip-convert.js
+zip-forecast.js
+messages.js
 
 [libs]
 
