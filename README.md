@@ -5,7 +5,7 @@ Based on the Node.js Command Line App for retrieving account badge and points in
 
 ### Version
 
-v0.1.1
+v0.1.2
 
 ### To run —
 
@@ -24,6 +24,7 @@ You will need [Node.JS ≥ v0.10.36](http://nodejs.org "The Node.JS Main Web Sit
 * Humidity now showing as percentage.
 * Unicode string chars now printing out ok in terminal CLI, just need to make sure character encoding in terminal is set always to UTF.
 * forecast.js now has optional forEach() code to call other module callback functions *(commented out; it's faster, but does not work as well as async.eachSeries())*.
+* Added in a number of appropriate line breaks in console.log() print outs and and corrected error messages for servers so they are now consistent for both forecast.io and geonames.org.
 * Start creating a front-end, perhaps in Angular.JS with some Twitter-Bootstrap — get coding!
 * Future version ideas — maybe other country postal codes also?
 

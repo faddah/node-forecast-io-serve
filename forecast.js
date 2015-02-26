@@ -28,7 +28,7 @@ var iterator = function (zipcode, next) {
 // for async mdule eachSeries() call, last "done" argument call.
 var allDone = function (err) {
   printError(err);
-  console.log('...and those are your forecasts for today!');
+  console.log('...and those are your forecasts for today!\n');
 }
 
  // Loop over each zipcode, one after another.

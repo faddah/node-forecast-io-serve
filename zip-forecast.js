@@ -40,7 +40,7 @@ function getForecast(location, ready) {
 				}
 			} else {
 				// Status Code Error
-				printError({message: "There was an error getting the profile for the Treehouse user \"" + username + ",\" user name may not exist. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
+				printError({message: "There was an error getting the weather forecast for " + location.placeName + ", " + location.adminName1 + ", " +  location.countryCode  + ": the U.S. Zip Code may not be valid or there was a problem with the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
 			}
 		});
 		//  console.log(response.statusCode);

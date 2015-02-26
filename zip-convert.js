@@ -36,7 +36,7 @@ function getLocation(zip, ready) {
 				}
 			} else {
 				// Status Code Error
-        printError({message: "There was an error getting the locaton for this zip code to the geonames.org call for \"" + zip + ",\" this may be a server error or a zip code that may not exist in the U.S.. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
+        printError({message: "There was an error getting the locaton for this zip code from the geonames.org server for \"" + zip + ",\" this may be a server error or a zip code that may not exist in the U.S. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
 			}
 		});
 	});
@@ -53,7 +53,7 @@ var showLocation = function(error, location) {
 		}
   } else {
 		// Status Code Error
-		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
+		printError({message: "There was an error getting the locaton for this zip code from the geonames.org server for \"" + zip + ",\" this may be a server error or a zip code that may not exist in the U.S. (Status Code Error: \'" + response.statusCode + " - " + http.STATUS_CODES[response.statusCode] + "\')"});
   }
 };
 

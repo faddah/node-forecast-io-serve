@@ -2,7 +2,7 @@
   "name": "node_forecast_io_serve",
   "description": "Command Line App to return weather forecast.",
   "author": "Faddah Wolf <my_biz@me.com>",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "async": "^0.9.0"
   },
