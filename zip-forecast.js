@@ -17,36 +17,36 @@ var printError = messages.printError;
 
 // gets the forecast after being passed the location object to get longitude and latitude within.
 function getForecast(location, ready) {
-	//  Connect to the Forecast.io API URL (https://api.forecast.io/forecast/[APIKEY]/[LATITUDE],[LONGITUDE],[TIME])
+  //  Connect to the Forecast.io API URL (https://api.forecast.io/forecast/[APIKEY]/[LATITUDE],[LONGITUDE],[TIME])
   var apiKey = '6b0701ccfa469e7b92cac363130fa2bb';
   var latitude = location.lat;
   var longitude = location.lng;
-	var request = https.get("https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude, function(response) {
-		var finalData = "";
-		//  Read the data
-		response.on('data', function (dataStream) {
-			finalData += dataStream;
-		});
-		response.on('end', function() {
-			if(response.statusCode === 200) {
-				try {
-					// Parse the data
-					var forecast = JSON.parse(finalData);
-					// Print the data
-					ready(null, forecast);
-				} catch(error) {
-					// Parse Error
-					printError(error);
-				}
-			} else {
-				// Status Code Error
-				printError({message: "There was an error getting the weather forecast for " + location.placeName + ", " + location.adminName1 + ", " +  location.countryCode  + ": the U.S. Zip Code may not be valid or there was a problem with the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
-			}
-		});
-		//  console.log(response.statusCode);
-	});
-	// Connection Error
-	request.on("error", printError);
+  var request = https.get("https://api.forecast.io/forecast/" + apiKey + "/" + latitude + "," + longitude, function(response) {
+    var finalData = "";
+    //  Read the data
+    response.on('data', function (dataStream) {
+      finalData += dataStream;
+    });
+    response.on('end', function() {
+      if(response.statusCode === 200) {
+        try {
+          // Parse the data
+          var forecast = JSON.parse(finalData);
+          // Print the data
+          ready(null, forecast);
+        } catch(error) {
+          // Parse Error
+          printError(error);
+        }
+      } else {
+        // Status Code Error
+        printError({message: "There was an error getting the weather forecast for " + location.placeName + ", " + location.adminName1 + ", " +  location.countryCode  + ": the U.S. Zip Code may not be valid or there was a problem with the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
+      }
+    });
+    //  console.log(response.statusCode);
+  });
+  // Connection Error
+  request.on("error", printError);
 }
 
 // calls on messages module to print out the forecast message.
@@ -56,12 +56,12 @@ var showForecast = function(error, forecast, location) {
       printForecastMessage(forecast, location);
       return forecast;
     } catch(error) {
-			// Locaton object null or undefined error
-			printError(error);
-		}
+      // Locaton object null or undefined error
+      printError(error);
+    }
   } else {
-		// Status Code Error
-		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
+    // Status Code Error
+    printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
   }
 };
 
@@ -72,12 +72,12 @@ var showForecastObject = function(error, forecast) {
       console.dir(forecast);
       return forecast;
     } catch(error) {
-			// Locaton object null or undefined error
-			printError(error);
-		}
+      // Locaton object null or undefined error
+      printError(error);
+    }
   } else {
-		// Status Code Error
-		printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
+    // Status Code Error
+    printError({message: "There was an error getting the weather info from the forecast.io server. (Status Code Error: \'" + response.statusCode + " - " + https.STATUS_CODES[response.statusCode] + "\')"});
   }
 };
 

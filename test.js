@@ -7,7 +7,7 @@ var doNextThing = function (error, data) {
   console.log('Data is');
   console.log(data);
   
-  // NOW we 
+  // NOW we
 }
 
 var foo;

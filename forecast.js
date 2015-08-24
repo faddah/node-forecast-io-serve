@@ -13,6 +13,9 @@ var async = require('async'),
     zipcodes = process.argv.slice(2),
     printError = require('./messages').printError;
 
+//Search Initiator (Let user know we are in the process of searching)
+console.log("------------------------------------------\n"+"\n" + "Searching for your weather update for "+zipcodes +"..." +"\n \n ");
+
 // for async module call, the middle iterator argument call, calling all other modules to do THE BIG WORK.
 var iterator = function (zipcode, next) {
  	// Do something w/the zipcode.
@@ -28,7 +31,7 @@ var iterator = function (zipcode, next) {
 // for async mdule eachSeries() call, last "done" argument call.
 var allDone = function (err) {
   printError(err);
-  console.log('...and those are your forecasts for today!\n');
+  console.log('------------------------------------------\n...and those are your forecasts for today!\n');
 }
 
  // Loop over each zipcode, one after another.
