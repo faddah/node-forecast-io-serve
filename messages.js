@@ -1,8 +1,10 @@
 /* @flow */
 // Prints out the location message
 function printLocationInfo(zipCode, city, state, country, long, lat) {
-	var zipMessage = "The city for the U.S. Zip Code " + zipCode + " is: " + city + ", " + state +  ", " + country + ", longitude: " + long + ", latitude: " +  lat  + ".";
-	console.log(zipMessage);
+  var zipMessage = "Your results have been found!  Your weather forecast is below: \n";
+  zipMessage += "------------------------------------------\n\n";
+  zipMessage += "-- The city for the U.S. Zip Code " + zipCode + " is: " + city + ", " + state +  ", " + country + ", longitude: " + long + ", latitude: " +  lat  + ".\n";
+  console.log(zipMessage);
 }
 
 // used in printForecastMessage() to assign compass degree number to general compass heading
@@ -57,7 +59,7 @@ function printForecastMessage(forecast, location) {
   var emDash = '\u2014';
   var degF = '\u2109';
   var percent = '\uFF05';
-  var forecastMsg = "The current weather forecast for " + location.placeName + ", " + location.adminName1 + ", " + location.countryCode + ", is: " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + degF + ", feels like: " + fCurr.apparentTemperature + degF + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + changeToPercent(fCurr.humidity) + percent + ", a barometric pressure of: " + hPAtoinHGConversion(fCurr.pressure).toFixed(2) + " inHG (inches Mercury), and a visibility of: " + fCurr.visibility + ".\n";
+  var forecastMsg = "-- The current weather forecast for " + location.placeName + ", " + location.adminName1 + ", " + location.countryCode + ", is: " + fCurr.summary + " " + fCurr.icon + ", temperature: " + fCurr.temperature + degF + ", feels like: " + fCurr.apparentTemperature + degF + ", wind speed: " + fCurr.windSpeed + "MPH out of the " + windDirection(fCurr.windBearing) + ", precipitation of: " + fCurr.precipIntensity + ", humidity of: " + changeToPercent(fCurr.humidity) + percent + ", a barometric pressure of: " + hPAtoinHGConversion(fCurr.pressure).toFixed(2) + " inHG (inches Mercury), and a visibility of: " + fCurr.visibility + ".\n";
   console.log(forecastMsg);
   if(forecast.alerts) {
     var fAlert = forecast.alerts[0];
@@ -69,7 +71,7 @@ function printForecastMessage(forecast, location) {
 // Prints out error messages
 function printError(error) {
   if (error) {
-	  console.error(error.message);
+    console.error(error.message);
   }
 }
 
